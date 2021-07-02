@@ -12,7 +12,7 @@ def api(message):
     model_predict = model.predict([message], k=2)[0]
     response = {x: y for x, y in filter(lambda x: model_predict[x[0]] == max(model_predict.values()),
                                         model_predict.items())}
-    return jsonify({'response': response})
+    return make_response(jsonify({'response': response}))
 
 
 @app.errorhandler(404)
